@@ -1,0 +1,31 @@
+<h2><%= @family_member[:name].capitalize %></h2>
+
+Recipes that <%= @family_member[:name] %> likes:
+<section id="recipe_likes">
+  <% if @recipes.empty? %>
+    <p class="empty_list"><%= @family_member[:name] %> doesn't have any favorite recipes yet!</p>
+  <% else %>
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li>
+          <a href="/recipes/<%= recipe[:recipe_id] %>">
+            <%= recipe[:name] %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/<%= @family_member[:id] %>/edit_family_member">EDIT FAMILY MEMBER</a>
+  </div>
+<% end %>
+

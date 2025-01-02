@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Picky Eaters</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/whitespace-reset.css">
+    <link rel="stylesheet" href="/stylesheets/picky.css">
+    <script src="/javascripts/jquery-3.7.0.js"></script>
+    <script src="/javascripts/picky.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+      <div id="title_image_and_signin">
+
+        <div id="title_image">
+          <a href="/">
+            <img src="/images/picky_title.png" alt="Hannah's title picture"  width="375">
+          </a>
+        </div>
+
+        <div id="signin">
+          <% if session[:username] %>
+            <form method="post" action="/users/signout">
+              <p>
+                Signed in as<br>
+                <%= session[:username].upcase %><br><br>
+                <button type="submit">SIGN OUT</button>
+              </p>
+            </form>
+          <% else %>
+            <p class="user-status"><a href="/users/signin">SIGN IN</a></p>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="nav">
+        <div>
+          <a href="/recipes">ALL RECIPES</a>
+        </div>
+        <div>
+          <a href="/ingredients">ALL INGREDIENTS</a>
+        </div>
+        <div>
+          <a href="/family_members">FAMILY MEMBERS</a>
+        </div>
+        <div>
+          <a href="/recipes/surprise">SURPISE ME!</a>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <div class="actions">
+        <%== yield_content :action_links %>
+      </div>
+
+      <div class="messages">
+        <% if session[:error] %>
+          <div id="flash_error">
+            <p><< <%= session.delete(:error) %> >></p>
+          </div>
+        <% end %>
+        <% if session[:success] %>
+          <div id="flash_success">
+            <p><< <%= session.delete(:success) %> >></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="content">
+        <%== yield %>
+      </div>
+    </div>
+
+    <footer>
+      <p>Kercheval ©2023</p>
+    </footer>
+
+  </body>
+</html>

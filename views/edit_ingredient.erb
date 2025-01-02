@@ -1,0 +1,35 @@
+<h2>Editing: <%= @ingredient[:name] %></h2>
+
+<form action="/ingredients/<%= @ingredient[:ingredient_id] %>" method="post">
+
+  Edit Ingredient Name:
+  <div class="">
+    <input id="input_name" type="text" name="ingredient_name" value="<%= @ingredient[:name] %>"
+     placeholder="<%= @ingredient[:name] %>" autofocus="autofocus" 
+     minlength="1" maxlength="40" size="30">
+  </div>
+
+  <input type="hidden" name="ingredient_id" value="<%= @ingredient[:ingredient_id] %>">
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/ingredients">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <form class="delete" action="/ingredients/<%= @ingredient[:ingredient_id] %>/delete" method="post">
+      <button type="submit" class="delete">
+        DELETE INGREDIENT
+      </button>
+    </form>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h2>Creating New Family Member</h2>
+
+<form action="/family_members" method="post">
+
+  Name:
+  <div>
+    <input id="input_name" type="text" name="family_member_name" autofocus="autofocus"
+     placeholder="new family member name" minlength="1" maxlength="40" size="30">
+  </div>
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/family_members">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

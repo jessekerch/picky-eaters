@@ -1,0 +1,37 @@
+Table recipes {
+  id integer [primary key]
+  name varchar
+  directions text
+  notes text
+  created_on date
+}
+
+Table ingredients {
+  id integer [primary key]
+  name varchar
+}
+
+Table recipe_ingredients {
+  id serial [primary key]
+  recipe_id integer
+  ingredient_id integer
+}
+
+TABLE members {
+  id serial [primary key]
+  name varchar
+}
+
+Table recipe_likes {
+  id serial [primary key]
+  recipe_id integer
+  member_id integer
+}
+
+Ref: recipe_ingredients.recipe_id > recipes.id // many-to-one
+
+Ref: recipe_ingredients.ingredient_id > ingredients.id // many-to-one
+
+Ref: recipe_likes.recipe_id > recipes.id // many-to-one
+
+Ref: recipe_likes.member_id > members.id // many-to-one

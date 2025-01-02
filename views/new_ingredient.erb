@@ -1,0 +1,28 @@
+<h2>Creating New Ingredient</h2>
+
+<form action="/ingredients" method="post">
+
+  New ingredient:
+  <div>
+    <input id="input_name" type="text" name="ingredient_name" autofocus="autofocus"
+     placeholder="ingredient name" minlength="1" maxlength="30" size="25">
+  </div>
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/ingredients">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

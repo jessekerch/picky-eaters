@@ -1,0 +1,57 @@
+<h2><%= @recipe[:name] %></h2>
+
+Family Members who like this:
+<div class="details">
+  <ul>
+    <% @family_members.each do |family_member| %>
+      <li>
+        <a href="/family_members/<%= family_member[:id] %>">
+          &#128149 <%= family_member[:name] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+Key ingredients:
+<div class="ingredients">
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+      <li>
+        <a href="/ingredients/<%= ingredient[:ingredient_id] %>" class="">
+          <%= ingredient[:name] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+Directions:
+<div class="details">
+  <p>
+    <% output_textarea(@recipe[:directions]) do |line| %>
+      <%= line %><br>
+    <% end %>
+  </p>
+</div>
+
+Notes:
+<div class="details">
+  <p>
+  <% output_textarea(@recipe[:notes]) do |line| %>
+    <%= line %><br>
+  <% end %>
+  </p>
+</div>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/<%= @recipe[:recipe_id] %>/edit_recipe">EDIT RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

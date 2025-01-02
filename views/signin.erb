@@ -1,0 +1,30 @@
+<h2>Sign In</h2>
+
+<form method="post" action="/users/signin">
+    <label for="username"> Username:
+      <input id="sign_input" name="username" id="username"
+       value="<%= params[:username] %>" autofocus="autofocus">
+    </label>
+    <label for="password"> Password:
+      <input id="sign_input" type="password" id="password" name="password">
+    </label>
+
+    <input type="hidden" name="requested_url" value="<%= session[:requested_url] %>">
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SIGN IN">
+    <input type="submit" name="submit" value="CANCEL" formnovalidate>
+  </fieldset>
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

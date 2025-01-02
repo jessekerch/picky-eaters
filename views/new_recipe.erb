@@ -1,0 +1,61 @@
+<h2>Creating New Recipe</h2>
+
+<form action="/recipes" method="post">
+
+  New Recipe:
+  <div class="">
+    <input id="input_name" type="text" name="recipe_name" autofocus="autofocus" value="<%= @recipe_name %>"
+     placeholder="recipe name" minlength="1" maxlength="40" size="30">
+  </div>
+
+  Recipe likes:
+  <div class="manage_ingredients">
+    <% @family_members.each do |family_member| %>
+      <label for="<%= family_member[:name] %>">
+        <input type="checkbox" name="recipe_likes[]" value="<%= family_member[:name] %>" <%= family_member[:check_status] %>>
+        <%= family_member[:name] %>
+      </label>
+    <% end %>
+  </div>
+
+  Edit recipe ingredients:
+    <div class="manage_ingredients">
+      <% @ingredients.each do |ingredient| %>
+        <label for="<%= ingredient[:name] %>">
+          <input type="checkbox" name="recipe_ingredients[]" value="<%= ingredient[:name] %>"
+            <%= ingredient[:check_status] %> >
+          <%= ingredient[:name] %>
+        </label>
+      <% end %>
+    </div>
+
+  Recipe directions:
+  <div class="details">
+    <textarea name="recipe_directions" rows="4" cols="50"><%= @recipe_directions %></textarea>
+  </div>
+
+  Edit recipe notes:
+  <div class="details">
+    <textarea name="recipe_notes" rows="4" cols="50"><%= @recipe_notes %></textarea>
+  </div>
+
+  <input type="hidden" name="recipe_meal" value="dinner">
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/recipes">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+<h2>Editing: <%= @recipe[:name] %></h2>
+
+<form action="/recipes/<%= @recipe[:recipe_id] %>" method="post">
+
+  Edit Recipe Name:
+  <div class="">
+    <input id="input_name" type="text" name="recipe_name" value="<%= @recipe[:name] %>"
+     placeholder="<%= @recipe[:name] %>" autofocus="autofocus" 
+    minlength="1" maxlength="40" size="30">
+  </div>
+
+  Edit recipe likes:
+  <div class="manage_ingredients">
+    <% @family_members.each do |family_member| %>
+      <label for="<%= family_member[:name] %>">
+        <input type="checkbox" name="recipe_likes[]" value="<%= family_member[:name] %>" <%= family_member[:check_status] %>>
+        <%= family_member[:name] %>
+      </label>
+    <% end %>
+  </div>
+
+  Edit recipe ingredients:
+    <div class="manage_ingredients">
+      <% @ingredients.each do |ingredient| %>
+        <label for="<%= ingredient[:name] %>">
+          <input type="checkbox" name="recipe_ingredients[]" value="<%= ingredient[:name] %>"
+            <%= ingredient[:check_status] %> >
+          <%= ingredient[:name] %>
+        </label>
+      <% end %>
+    </div>
+
+  Edit recipe directions:
+  <div class="details">
+    <textarea name="recipe_directions" rows="4" cols="50"><%= @recipe[:directions] %></textarea>
+  </div>
+
+  Edit recipe notes:
+  <div class="details">
+    <textarea name="recipe_notes" rows="4" cols="50"><%= @recipe[:notes] %></textarea>
+  </div>
+
+  <input type="hidden" name="recipe_id" value="<%= @recipe[:recipe_id] %>">
+  <input type="hidden" name="recipe_meal" value="dinner">
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/recipes/<%= @recipe[:recipe_id] %>">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <form class="delete" action="/recipes/<%= @recipe[:recipe_id] %>/delete" method="post">
+      <button type="submit" class="delete">
+        DELETE RECIPE
+      </button>
+    </form>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+  </div>
+<% end %>

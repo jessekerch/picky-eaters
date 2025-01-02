@@ -1,0 +1,35 @@
+<h2>Editing: <%= @family_member[:name] %></h2>
+
+<form action="/family_members/<%= @family_member[:id] %>" method="post">
+
+  Edit Family Member name:
+  <div class="">
+    <input id="input_name" type="text" name="family_member_name" value="<%= @family_member[:name] %>"
+     placeholder="<%= @family_member[:name] %>" autofocus="autofocus"
+     minlength="1" maxlength="40" size="30">
+  </div>
+
+  <input type="hidden" name="family_member_id" value="<%= @family_member[:id] %>">
+
+  <fieldset class="save_or_cancel">
+    <input type="submit" name="submit" value="SAVE CHANGES">
+    <a class="fake_button" href="/family_members">CANCEL</a>
+  </fieldset>
+
+</form>
+
+<% content_for :action_links do %>
+  <div>
+    <a href="/recipes/new">+NEW RECIPE</a>
+  </div>
+  <div>
+    <a href="/ingredients/new">+NEW INGREDIENT</a>
+  </div>
+  <div>
+    <form class="delete" action="/family_members/<%= @family_member[:id] %>/delete" method="post">
+      <button type="submit" class="delete">
+        DELETE FAMILY MEMBER
+      </button>
+    </form>
+  </div>
+<% end %>

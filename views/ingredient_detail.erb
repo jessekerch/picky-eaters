@@ -1,0 +1,27 @@
+<h2><%= @ingredient[:name].capitalize %></h2>
+
+List of recipes including <%= @ingredient[:name] %>:
+<div id="recipe_likes">
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <a href="/recipes/<%= recipe[:recipe_id] %>">
+          <%= recipe[:name] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% content_for :action_links do %>
+<div>
+  <a href="/recipes/new">+NEW RECIPE</a>
+</div>
+<div>
+  <a href="/ingredients/<%= @ingredient[:ingredient_id] %>/edit_ingredient">EDIT INGREDIENT</a>
+</div>
+<div>
+  <a href="/family_members/new">+NEW FAMILY MEMBER</a>
+</div>
+<% end %>
+
