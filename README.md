@@ -1,11 +1,4 @@
 # Picky Eaters Recipe Keeper
-by Jesse Kercheval
-Launch School RB189 course project - for LS staff eyes only
-
-## Personal Note
-I had a blast with this project! So exciting to actually make a thing!
-I know went beyond the minimum requirements as I have multiple many:many relationships, but I hope I didn't go overboard or make it hard to grade. I was challenged and motivated by this idea, I learned a ton, and I think my family and I will actually keep using it.
-Credit to my daughter Hannah for drawing the image title and choosing the color scheme.
 
 ## About
 Picky Eaters supports quick meal planning with just enough recipe info: family likes and key ingredients. Planning family dinners every week is tough. First we need to find or recall the many dinner recipes, then we need to narrow them down by ingredients on hand and picky family member tastes. Most recipe apps solve the problem of *how* to make a recipe. Picky Eaters focuses on *what* to make.
@@ -29,10 +22,10 @@ I used the following to run and test this application:
 - PostgreSQL 14.8
 
 ## Installation
-Download and unzip the `rb189_picky_eaters file`, and navigate into the `rb189_picky_eaters` directory
+Download and unzip the `picky_eaters file`, and navigate into the `picky_eaters` directory
 Install PostgreSQL, version 14.8 or higher is recommended
 Install Ruby 3.2.2, or switch to 3.2.2 with Ruby version manager
-Install required gems with `bundle install` in rb189_picky directory
+Install required gems with `bundle install`
 Create a new database with `createdb recipes`
 Create tables and insert seed data with `psql -d recipes < schema.sql`
 Start web app with `ruby picky.rb`
